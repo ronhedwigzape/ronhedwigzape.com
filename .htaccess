@@ -1,0 +1,15 @@
+RewriteEngine On
+RewriteBase /ronhedwigzape-com/
+
+# Exclude assets from rewrite rule
+RewriteCond %{REQUEST_URI} !\.(css|js|svg|jpg|jpeg|png|gif|woff2|ico|ttf)$ [NC]
+
+# Redirect all requests to index.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /ronhedwigzape-com/public/index.html [L]
+
+# Exclude the public and app directories from the rewrite rule
+RewriteCond %{REQUEST_URI} !^/ronhedwigzape-com/public/
+RewriteCond %{REQUEST_URI} !^/ronhedwigzape-com/app/
+RewriteRule ^(.*)$ /ronhedwigzape-com/public/$1 [L]
