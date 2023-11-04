@@ -52,9 +52,9 @@ const socialLinks = reactive([
                 <NavLink :href="route('projects')">Projects</NavLink>
                 <NavLink :href="route('experiences')">Experiences</NavLink>
                 <NavLink :href="route('contact')">Contact</NavLink>
-                <Link :href="social.link" v-for="social in socialLinks">
+                <a :href="social.link" v-for="social in socialLinks">
                     <Icon class="transition hover:text-gray-50 delay-100" height="25" :icon="`iconoir:${social.name}`"/>
-                </Link>
+                </a>
             </div>
         </div>
         <div v-else class="container mx-auto flex justify-between" align="center">
@@ -67,9 +67,9 @@ const socialLinks = reactive([
                 <Link :href="route('projects')"><Icon height="25" icon="carbon:idea"/></Link>
                 <Link :href="route('experiences')"><Icon height="25" icon="carbon:explore"/></Link>
                 <Link :href="route('contact')"><Icon height="25" icon="carbon:user"/></Link>
-                <Link :href="social.link" v-for="social in socialLinks">
+                <a :href="social.link" v-for="social in socialLinks">
                     <Icon class="transition hover:text-gray-50 delay-100" height="25" :icon="`iconoir:${social.name}`"/>
-                </Link>
+                </a>
             </div>
         </div>
     </nav>
