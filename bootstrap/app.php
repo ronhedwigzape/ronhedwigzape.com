@@ -15,6 +15,9 @@ $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
 
+// Use public_html as public (For Deployment)
+// $app->usePublicPath($app->basePath('public_html'));
+
 /*
 |--------------------------------------------------------------------------
 | Bind Important Interfaces
