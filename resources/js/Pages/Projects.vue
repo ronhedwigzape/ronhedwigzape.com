@@ -8,7 +8,7 @@ import {Head} from "@inertiajs/vue3";
     <Head title="Projects - "/>
     <Hogwarts>
         <template #title>
-            This is for projects
+            Projects
         </template>
         <template #content>
 

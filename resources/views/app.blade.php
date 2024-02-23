@@ -21,7 +21,7 @@
         @vite(['resources/js/app.ts', "resources/js/Pages/{$page['component']}.vue"])
         @inertiaHead
     </head>
-    <body class="font-sans antialiased" style="background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('{{ asset('hogwarts.jpg') }}'); background-size: cover;">
-        @inertia
+    <body class="font-sans antialiased" style="background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('{{ asset('hogwarts.jpg') }}'); background-size: cover; background-attachment: fixed;">
+    @inertia
     </body>
 </html>

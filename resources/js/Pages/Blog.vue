@@ -11,7 +11,7 @@ defineProps({
     <Head title="Blog - "/>
     <Hogwarts>
         <template #title>
-            This is for blog
+            Blog
         </template>
         <template #content>
 

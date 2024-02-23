@@ -3,6 +3,7 @@ import { ref, onMounted, onUnmounted, reactive } from 'vue';
 import { Icon } from '@iconify/vue';
 import { Link } from '@inertiajs/vue3';
 import NavLink from './NavLink.vue';
+import {SocialLink} from "@/types/social-link";
 
 const isDropdownOpen = ref<boolean>(false);
 const windowWidth = ref<number>(window.innerWidth);
@@ -19,27 +20,11 @@ onUnmounted((): void => {
     window.removeEventListener('resize', updateWidth);
 });
 
-interface SocialLink {
-    name: string;
-    link: string;
-}
-
 const socialLinks = reactive<SocialLink[]>([
     {
-        name: 'facebook',
-        link: 'https://www.facebook.com/ronhedwigzape'
-    },
-    {
         name: 'github',
-        link: 'https://www.github.com/ronhedwigzape'
-    },
-    {
-        name: 'linkedin',
-        link: 'https://www.linkedin.com/in/ron-hedwig-zape-b49062269'
-    },
-    {
-        name: 'twitter',
-        link: 'https://www.twitter.com/ronhedwigzape'
+        desc: 'Github',
+        link: 'https://www.github.com/ronhedwigzape/ronhedwigzape.com'
     },
 ]);
 
@@ -50,15 +35,14 @@ const socialLinks = reactive<SocialLink[]>([
         <div v-if="windowWidth > 768" class="lg:container mx-auto flex justify-between">
             <!-- Display text links for large screens -->
             <div>
-                <Link :href="route('home')" class="position-fixed"><Icon height="25" icon="file-icons:owl"/></Link>
+                <Link :href="route('home')" class="fixed"><Icon height="25" icon="file-icons:owl"/></Link>
             </div>
             <div class="flex gap-x-4">
                 <NavLink :href="route('blog')">Blog</NavLink>
                 <NavLink :href="route('projects')">Projects</NavLink>
-                <NavLink :href="route('experiences')">Experiences</NavLink>
                 <NavLink :href="route('contact')">Contact</NavLink>
                 <a :href="social.link" v-for="social in socialLinks">
-                    <Icon class="transition hover:text-gray-50 delay-100" height="25" :icon="`iconoir:${social.name}`"/>
+                    <Icon class="transition hover:text-gray-50 delay-100 mx-1" height="22" :icon="`line-md:${social.name}`"/>
                 </a>
             </div>
         </div>
@@ -70,7 +54,6 @@ const socialLinks = reactive<SocialLink[]>([
             <div class="flex gap-x-4">
                 <Link :href="route('blog')"><Icon height="25" icon="carbon:blog"/></Link>
                 <Link :href="route('projects')"><Icon height="25" icon="carbon:idea"/></Link>
-                <Link :href="route('experiences')"><Icon height="25" icon="carbon:explore"/></Link>
                 <Link :href="route('contact')"><Icon height="25" icon="carbon:user"/></Link>
             </div>
         </div>

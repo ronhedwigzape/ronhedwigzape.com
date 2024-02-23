@@ -9,7 +9,7 @@ import {Head} from "@inertiajs/vue3";
     <Head title="Contact - "/>
     <Hogwarts>
         <template #title>
-            This is for contact
+            Let us connect!
         </template>
         <template #content>
 

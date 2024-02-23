@@ -1326,7 +1326,7 @@ html, body {
 @keyframes flash {
     0%, 30%, 100% {
         opacity: 0;
-        box-shadow: 0 0 0vw 0vw yellow;
+        box-shadow: 0 0 0 0 yellow;
     }
     5% {
         opacity: 1;

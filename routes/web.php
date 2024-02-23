@@ -31,11 +31,6 @@ Route::get('/projects', function () {
     ]);
 })->name('projects');
 
-Route::get('/experiences', function () {
-    return Inertia::render('Experiences', [
-    ]);
-})->name('experiences');
-
 Route::get('/contact', function () {
     return Inertia::render('Contact', [
     ]);
