@@ -74,7 +74,7 @@ defineProps({
                 Hi, I'm Ron Hedwig, a open-source developer and an aspiring software engineer.
             </p>
             <p class="leading-relaxed">
-                Senior Computer Science student at <HedwigLink class="font-bold inline-block" :logo="schoolLogo" logo-size="11" :src="facebook" :content="school"/>.
+                Senior Computer Science student at <HedwigLink class="font-bold inline-block" :logo="schoolLogo" :logo-size="11" :src="facebook" :content="school"/>.
             </p>
             <p class="leading-relaxed">
                 Design is greatly inspired from <HedwigLink class="font-bold inline-block" src="https://antfu.me" content="Anthony Fu's"/> website.
