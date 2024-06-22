@@ -6,5 +6,14 @@ import { Head, Link } from '@inertiajs/vue3';
 <template>
     <Head title="Home"/>
 
-    <div>Hello world</div>
+    <v-app>
+        <v-main>
+            <v-app-bar>
+                <v-app-bar-title>Home</v-app-bar-title>
+            </v-app-bar>
+            <v-btn>h</v-btn>
+            <div class="tw-text-center">Hello world</div>
+        </v-main>
+
+    </v-app>
 </template>
