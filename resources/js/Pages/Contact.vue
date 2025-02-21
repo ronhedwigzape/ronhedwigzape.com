@@ -3,7 +3,16 @@
 import Hogwarts from "@/Layouts/Hogwarts.vue";
 import { Head } from "@inertiajs/vue3";
 import { ref } from 'vue';
+import { Input } from '@/Components/ui/input'
 import axios from 'axios';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/Components/ui/card';
+import { Label } from '@/Components/ui/label';
+import { Button } from '@/Components/ui/button';
+import { Textarea } from '@/Components/ui/textarea';
+import { useToast } from '@/Components/ui/toast/use-toast';
+import Toaster from '@/Components/ui/toast/Toaster.vue'
+
+const { toast } = useToast();
 
 const form = ref({
     name: '',
@@ -28,10 +37,18 @@ const submitForm = async () => {
             email: '',
             message: ''
         };
-        alert('Email sent successfully!');
+        toast({
+            title: 'Success',
+            description: 'Email sent successfully!',
+            variant: 'default'
+        });
     } catch (err: any) {
         error.value = err.response?.data?.message || 'Failed to send email. Please try again.';
-        alert(error.value);
+        toast({
+            title: 'Error',
+            description: error.value || 'An error occurred.',
+            variant: 'destructive'
+        });
     } finally {
         loading.value = false;
     }
@@ -40,41 +57,38 @@ const submitForm = async () => {
 </script>
 
 <template>
+    <Toaster />
     <Head title="Contact - "/>
     <Hogwarts>
         <template #title>
             Let us connect!
         </template>
         <template #content>
-            <div class="max-w-lg p-6 mx-auto bg-white rounded-lg shadow-lg">
-                <h1 class="mb-4 text-3xl font-bold text-center text-gold">Contact Us</h1>
-                <form @submit.prevent="submitForm">
-                    <div class="mb-4">
-                        <label for="name" class="block mb-2 font-semibold text-gray-700">Name:</label>
-                        <input type="text" id="name" v-model="form.name" required
-                               class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold"
-                               :disabled="loading">
-                    </div>
-                    <div class="mb-4">
-                        <label for="email" class="block mb-2 font-semibold text-gray-700">Email:</label>
-                        <input type="email" id="email" v-model="form.email" required
-                               class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold"
-                               :disabled="loading">
-                    </div>
-                    <div class="mb-4">
-                        <label for="message" class="block mb-2 font-semibold text-gray-700">Message:</label>
-                        <textarea id="message" v-model="form.message" required
-                                  class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold"
-                                  :disabled="loading"></textarea>
-                    </div>
-                    <button type="submit" :disabled="loading"
-                            class="w-full py-2 font-semibold text-white transition duration-200 rounded-lg bg-gold hover:bg-yellow-600">
-                        {{ loading ? 'Sending...' : 'Send' }}
-                    </button>
-                    <div v-if="error" class="mt-4 text-red-500">{{ error }}</div>
-                    <div v-if="success" class="mt-4 text-green-500">Message sent successfully!</div>
-                </form>
-            </div>
+            <Card class="max-w-lg mx-auto">
+                <CardHeader>
+                    <CardTitle>Contact Us</CardTitle>
+                    <CardDescription>We'd love to hear from you!</CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <form @submit.prevent="submitForm">
+                        <div class="mb-4">
+                            <Label for="name">Name:</Label>
+                            <Input type="text" id="name" v-model="form.name" required :disabled="loading" />
+                        </div>
+                        <div class="mb-4">
+                            <Label for="email">Email:</Label>
+                            <Input type="email" id="email" v-model="form.email" required :disabled="loading" />
+                        </div>
+                        <div class="mb-4">
+                            <Label for="message">Message:</Label>
+                            <Textarea placeholder="Type your message here." v-model="form.message" required :disabled="loading" />
+                        </div>
+                        <Button type="submit" :disabled="loading" class="w-full py-2 font-semibold text-white transition duration-200 rounded-lg bg-gold hover:bg-yellow-600">
+                            {{ loading ? 'Sending...' : 'Send' }}
+                        </Button>
+                    </form>
+                </CardContent>
+            </Card>
         </template>
     </Hogwarts>
 </template>
