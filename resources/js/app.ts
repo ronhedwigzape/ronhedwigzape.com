@@ -17,7 +17,7 @@ createInertiaApp({
         createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(ZiggyVue, Ziggy)
-            .use(pinia) // Use the Pinia instance in your Vue app
+            .use(pinia)
             .mount(el);
     },
     progress: {
