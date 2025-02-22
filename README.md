@@ -42,6 +42,7 @@ This guide outlines the steps to deploy your website using GitHub and Hostinger.
       ```php
       $app->usePublicPath($app->basePath('public_html'));
       ```
+    - Save the file.
     - This step configures Laravel to use `/files/public_html` as the public path.
 
 ---
