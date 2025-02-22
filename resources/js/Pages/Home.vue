@@ -71,10 +71,10 @@ defineProps({
         </template>
         <template #content>
             <p class="mb-5 leading-relaxed">
-                Hi, I'm Ron Hedwig, a open-source developer and an aspiring software engineer.
+                Hi, I'm Ron Hedwig, an IT professional, full-stack developer, and open-source contributor.
             </p>
             <p class="leading-relaxed">
-                Senior Computer Science student at <HedwigLink class="font-bold inline-block" :logo="schoolLogo" :logo-size="11" :src="facebook" :content="school"/>.
+                Graduated Computer Science at <HedwigLink class="font-bold inline-block" :logo="schoolLogo" :logo-size="11" :src="facebook" :content="school"/>.
             </p>
             <p class="leading-relaxed">
                 Design is greatly inspired from <HedwigLink class="font-bold inline-block" src="https://antfu.me" content="Anthony Fu's"/> website.

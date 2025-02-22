@@ -16,7 +16,7 @@ $app = new Illuminate\Foundation\Application(
 );
 
 // Use public_html as public (For Deployment)
-//$app->usePublicPath($app->basePath('public_html'));
+// $app->usePublicPath($app->basePath('public_html'));
 /*
 |--------------------------------------------------------------------------
 | Bind Important Interfaces

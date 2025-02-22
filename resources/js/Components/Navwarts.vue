@@ -24,7 +24,7 @@ const socialLinks = reactive<SocialLink[]>([
     {
         name: 'github',
         desc: 'Github',
-        link: 'https://www.github.com/ronhedwigzape/ronhedwigzape.com'
+        link: 'https://www.github.com/ronhedwigzape/'
     },
 ]);
 
