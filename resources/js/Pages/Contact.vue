@@ -1,16 +1,16 @@
 <script setup lang="ts">
-
+import { ref, h } from 'vue';
 import Hogwarts from "@/Layouts/Hogwarts.vue";
 import { Head } from "@inertiajs/vue3";
-import { ref } from 'vue';
-import { Input } from '@/Components/ui/input'
 import axios from 'axios';
+import { Input } from '@/Components/ui/input';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/Components/ui/card';
 import { Label } from '@/Components/ui/label';
 import { Button } from '@/Components/ui/button';
 import { Textarea } from '@/Components/ui/textarea';
 import { useToast } from '@/Components/ui/toast/use-toast';
-import Toaster from '@/Components/ui/toast/Toaster.vue'
+import Toaster from '@/Components/ui/toast/Toaster.vue';
+import { ToastAction } from "@/Components/ui/toast";
 
 const { toast } = useToast();
 
@@ -39,21 +39,28 @@ const submitForm = async () => {
         };
         toast({
             title: 'Success',
-            description: 'Email sent successfully!',
+            description: 'Your owl has been dispatched successfully!',
             variant: 'default'
         });
     } catch (err: any) {
-        error.value = err.response?.data?.message || 'Failed to send email. Please try again.';
+        error.value = err.response?.data?.message || 'Failed to send your message. Please try again.';
         toast({
-            title: 'Error',
-            description: error.value || 'An error occurred.',
-            variant: 'destructive'
+            title: 'Oh no! The owl seems lost.',
+            description: 'There was a problem sending your message. Please try again.',
+            variant: 'destructive',
+            action: h(ToastAction, {
+                altText: 'Try again',
+                onClick: () => {
+                    submitForm();
+                }
+            }, {
+                default: () => 'Try again'
+            }),
         });
     } finally {
         loading.value = false;
     }
 };
-
 </script>
 
 <template>
@@ -64,10 +71,12 @@ const submitForm = async () => {
             Let us connect!
         </template>
         <template #content>
-            <Card class="max-w-lg mx-auto">
+            <Card class="w-full mx-auto">
                 <CardHeader>
-                    <CardTitle>Contact Us</CardTitle>
-                    <CardDescription>We'd love to hear from you!</CardDescription>
+                    <CardTitle>Headmaster's Owl Post</CardTitle>
+                    <CardDescription>
+                        Send your message to the headmaster’s office—where wisdom, reminiscent of Dumbledore’s guidance, awaits your enchanted correspondence.
+                    </CardDescription>
                 </CardHeader>
                 <CardContent>
                     <form @submit.prevent="submitForm">
@@ -79,12 +88,12 @@ const submitForm = async () => {
                             <Label for="email">Email:</Label>
                             <Input type="email" id="email" v-model="form.email" required :disabled="loading" />
                         </div>
-                        <div class="mb-4">
+                        <div class="mb-7">
                             <Label for="message">Message:</Label>
-                            <Textarea placeholder="Type your message here." v-model="form.message" required :disabled="loading" />
+                            <Textarea placeholder="Type your enchanted message here." v-model="form.message" required :disabled="loading" />
                         </div>
-                        <Button type="submit" :disabled="loading" class="w-full py-2 font-semibold text-white transition duration-200 rounded-lg bg-gold hover:bg-yellow-600">
-                            {{ loading ? 'Sending...' : 'Send' }}
+                        <Button type="submit" :disabled="loading" class="w-full">
+                            {{ loading ? 'Sending your owl...' : 'Send' }}
                         </Button>
                     </form>
                 </CardContent>
@@ -92,9 +101,3 @@ const submitForm = async () => {
         </template>
     </Hogwarts>
 </template>
-
-<style scoped>
-.text-gold {
-    color: #FFD700; /* Gold color */
-}
-</style>
